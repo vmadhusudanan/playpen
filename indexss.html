@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+    <meta charset="UTF-8">
+    <title>Hello World 3</title>
+</head>
+
+<body>
+	
+	<script src='https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js'> </script>
+	<script>
+				
+		// const statsig = require('statsig-js');
+		 	statsig.initialize("client-bYItYOPnuvbo60ot7iDa13gFBbodyfDcqDf1hgHDHJV", { userID: 'vineeth'}).then ((data) => {
+			document.write("Vineeth: "+statsig.checkGate("gate1")+"<br/>")
+			
+		 });
+
+		
+
+	  </script>
+
+	Hello World
+</body>
+</html>
