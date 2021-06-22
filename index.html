@@ -9,12 +9,17 @@
 
 <body>
 	
-	<script src='https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js'>
-		 
-		alert( 'got to 0' );
-		const statsig = require('statsig-js');
-		alert( 'got to 0.5' );
-		alert( 'got to 1' );
+	<script src='https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js'> </script>
+	<script>
+				
+		// const statsig = require('statsig-js');
+		 	statsig.initialize("client-bYItYOPnuvbo60ot7iDa13gFBbodyfDcqDf1hgHDHJV", { userID: 'Vineeth'}).then ((data) => {
+			document.write("Vineeth: "+statsig.checkGate("gate1")+"<br/>")
+			
+		 });
+
+		
+
 	  </script>
 
 	Hello World
