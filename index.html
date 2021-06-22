@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-	
+  <head>
+    <title>Split SDK quickstart example.</title>
+  </head>
+  <body>
+    <h1>Split SDK quickstart example.</h1>
 
-    <meta charset="UTF-8">
-    <title>Hello World 3</title>
-</head>
+    <!-- Some polyfills to ensure we have promises. -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <!-- Split SDK loaded via CDN. -->
+    <script src="https://cdn.split.io/sdk/split-10.15.8.js"></script>
+    <!-- Our custom script. -->
+    <script type="text/javascript">
+      (function() {
+      var factory = splitio({
+        core: {
+          authorizationKey: 'duicc1nk1m7mj53rsoencdup4ghk7fk5vt6u',
+          key: 'CUSTOMER_ID'
+        }
+      });
+      var client = factory.client();
 
-<body>
-	
-	<script src="https://unpkg.com/launchdarkly-js-client-sdk@2"></script>
-	<script>
-		   var user = {
-    		firstName: 'Bob',
-    		lastName: 'Loblaw',
-    		key: 'GUID1',
-    		custom: {
-      		groups: 'beta_testers'
-    			}
-  			};
+      client.on(client.Event.SDK_READY, function() {
+        var treatment = client.getTreatment('Rooms_Feature');
 
-		var div = document.createElement('div');
-		document.body.appendChild(div);
+        if (treatment === 'on') {
+          // Insert code for on treatment
+        } else if (treatment === 'off') {
+          // Insert code for off treatment
+        } else {
+          // Insert code for control treatment
+        }
 
-		div.appendChild(document.createTextNode('Initializing...'));
-
-		var ldclient = LDClient.initialize('60d218fbc0a0fd0d516a71cc', user);
-
-		function render() {
-			var shouldShow = ldclient.variation('istap', false);
-			var label = (shouldShow ? 'Showing' : 'Not showing') + ' your feature to ' + user.key;
-			div.replaceChild(document.createTextNode(label), div.firstChild);
-		}
-
-		ldclient.on('ready', render);
-		ldclient.on('change', render);
-	</script>
-
-		
-
-	  
-
-	Hello World
-</body>
+        client.destroy().then(function() {
+          // Your data is successfully flushed.
+        });
+      });
+      })();
+    </script>
+  </body>
 </html>
