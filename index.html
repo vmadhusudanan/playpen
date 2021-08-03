@@ -14,8 +14,11 @@
 				
 		// const statsig = require('statsig-js');
 		 	statsig.initialize("client-bYItYOPnuvbo60ot7iDa13gFBbodyfDcqDf1hgHDHJV", { email: 'vm@statsig.com'}).then ((data) => {
-			document.write("Vineeth: "+statsig.checkGate("compress_hevc")+"<br/>")
-			
+			statsig.getExperiment("onboarding_experiment_1")
+
+		//	document.write("Vineeth: "+statsig.checkGate("compress_hevc")+"<br/>")
+
+
 		 });
 
 		
