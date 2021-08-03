@@ -1,42 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Split SDK quickstart example.</title>
-  </head>
-  <body>
-    <h1>Split SDK quickstart example.</h1>
+<head>
+	
 
-    <!-- Some polyfills to ensure we have promises. -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <!-- Split SDK loaded via CDN. -->
-    <script src="https://cdn.split.io/sdk/split-10.15.8.js"></script>
-    <!-- Our custom script. -->
-    <script type="text/javascript">
-      (function() {
-      var factory = splitio({
-        core: {
-          authorizationKey: 'duicc1nk1m7mj53rsoencdup4ghk7fk5vt6u',
-          key: 'CUSTOMER_ID'
-        }
-      });
-      var client = factory.client();
+    <meta charset="UTF-8">
+    <title>Hello World 3</title>
+</head>
 
-      client.on(client.Event.SDK_READY, function() {
-        var treatment = client.getTreatment('Rooms_Feature');
+<body>
+	
+	<script src='https://cdn.jsdelivr.net/npm/statsig-js/dist/statsig-prod-web-sdk.min.js'> </script>
+	<script>
+				
+		// const statsig = require('statsig-js');
+		 	statsig.initialize("client-bYItYOPnuvbo60ot7iDa13gFBbodyfDcqDf1hgHDHJV", { userID: 'vineeth'}).then ((data) => {
+			document.write("Vineeth: "+statsig.checkGate("gate1")+"<br/>")
+			
+		 });
 
-        if (treatment === 'on') {
-          // Insert code for on treatment
-        } else if (treatment === 'off') {
-          // Insert code for off treatment
-        } else {
-          // Insert code for control treatment
-        }
+		
 
-        client.destroy().then(function() {
-          // Your data is successfully flushed.
-        });
-      });
-      })();
-    </script>
-  </body>
+	  </script>
+
+	Hello World
+</body>
 </html>
